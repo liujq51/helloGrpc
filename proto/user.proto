@@ -1,0 +1,17 @@
+syntax = "proto3";
+package proto;
+
+option go_package = "proto;proto";
+
+message UserId {
+    int32 id = 1;
+}
+
+message UserInfo {
+    string name =1;
+    int32 id = 2;
+}
+
+service Detail{
+   rpc GetUserInfo(UserId) returns (UserInfo) {}
+}
