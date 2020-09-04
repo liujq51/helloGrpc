@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"helloGrpc/etcdv3"
 	"log"
 	"math/rand"
 	"net"
@@ -13,8 +14,19 @@ import (
 	"google.golang.org/grpc"
 )
 
+const (
+	// Address 监听地址
+	Address string = "localhost:9001"
+	// Network 网络通信协议
+	Network string = "tcp"
+	// SerName 服务名称
+	SerName string = "simple_grpc"
+)
+
+var EtcdEndpoints = []string{"localhost:2379"}
+
 func main() {
-	listen, err := net.Listen("tcp", "127.0.0.1:9000") // Address gRPC服务地址
+	listen, err := net.Listen(Network, Address) // Address gRPC服务地址
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
@@ -22,6 +34,14 @@ func main() {
 	// 与http的注册路由类似，此处将所有服务注册到grpc服务器上，
 	pb.RegisterServeRouteServer(s, ServeRoute{})
 	pb.RegisterDetailServer(s, DetailRoute{})
+
+	//把服务注册到etcd
+	ser, err := etcdv3.NewServiceRegister(EtcdEndpoints, SerName, Address, 5)
+	if err != nil {
+		log.Fatalf("register service err: %v", err)
+	}
+	defer ser.Close()
+
 	log.Println("grpc serve running")
 	if err := s.Serve(listen); err != nil {
 		log.Fatal(err)

@@ -63,5 +63,13 @@
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="221" y="100" key="SettingsEditor/1440.-157.1920.1008/0.23.1440.877@0.23.1440.877" timestamp="1599119887691" />
+    <state x="2102" y="137" width="584" height="474" key="find.popup" timestamp="1599156677246">
+      <screen x="1440" y="-157" width="1920" height="1008" />
+    </state>
+    <state x="2102" y="137" width="584" height="474" key="find.popup/1440.-157.1920.1008/0.23.1440.877@1440.-157.1920.1008" timestamp="1599156677246" />
+    <state x="2124" y="296" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1599158025740">
+      <screen x="1440" y="-157" width="1920" height="1008" />
+    </state>
+    <state x="2124" y="296" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/1440.-157.1920.1008/0.23.1440.877@1440.-157.1920.1008" timestamp="1599158025740" />
   </component>
 </project>
